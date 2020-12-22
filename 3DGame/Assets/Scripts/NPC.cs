@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class NPC : MonoBehaviour
 {
@@ -9,16 +10,43 @@ public class NPC : MonoBehaviour
     public GameObject dialogue;
     [Header("對話內容")]
     public Text textContent;
+    [Header("對話者名稱")]
+    public Text textName;
+    [Header("對話間隔")]
+    public float interval = 0.2f;
 
 
     public bool playerInArea;
+
+    public enum NPCState
+    {
+        FirstDialogue,Missioning,Finish 
+    }
+
+    public NPCState state = NPCState.FirstDialogue;
+
+    /*協同程序
+    private void Start()
+    {
+        StartCoroutine(Test());
+    }
+
+    private IEnumerator Test()
+    {
+        print("嗨~");
+        yield return new WaitForSeconds(1.5f);
+        print("嗨~我是一點五秒後");
+        yield return new WaitForSeconds(2);
+        print("嗨~又過去兩秒了");
+    }
+    */
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "小明")
         {
             playerInArea = true;
-            Dialogue();
+            StartCoroutine(Dialogue());
         }
     }
 
@@ -27,10 +55,17 @@ public class NPC : MonoBehaviour
         if (other.name == "小明")
         {
             playerInArea = false;
+            StopDialogue();
         }
     }
+      
+    private  void StopDialogue()
+    {
+        dialogue.SetActive(false);
+        StopAllCoroutines();
+    }
 
-    private void Dialogue()
+    private IEnumerator Dialogue()
     {
         //{
         //    for (int i = 0; i < 10; i++)
@@ -39,9 +74,33 @@ public class NPC : MonoBehaviour
         //    }
         //}
 
-        for (int i = 0; i < data.dialogueA.Length; i++)
+        dialogue.SetActive(true);
+
+        textContent.text = "";
+
+        textName.text = name;
+
+        string dialogueString = data.dialogueB;
+
+        switch (state)
         {
-            print(data.dialogueA[i]);
+            case NPCState.FirstDialogue:
+                dialogueString = data.dialogueA;
+                break;
+            case NPCState.Missioning:
+                dialogueString = data.dialogueB;
+                break;
+            case NPCState.Finish:
+                dialogueString = data.dialogueC;
+                break;
+          
+        }
+
+        for (int i = 0; i < dialogueString.Length; i++)
+        {
+            // print(data.dialogueA[i]);
+            textContent.text += dialogueString[i] + "";
+            yield return new WaitForSeconds(interval);
         }
     }
 }
