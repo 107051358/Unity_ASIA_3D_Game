@@ -286,6 +286,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u72D7\u72D7"
       objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: d9a1483b77bf10e4e851678ab6c2e54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: d9a1483b77bf10e4e851678ab6c2e54e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 48.47527
@@ -507,6 +511,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 330efb0e9eed825408809c121441b8a5, type: 3}
+--- !u!1 &630383389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 630383390}
+  m_Layer: 8
+  m_Name: "\u653B\u64CA\u4E2D\u5FC3\u9EDE"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &630383390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630383389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.528, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 784922996}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &740413055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100014, guid: d9a1483b77bf10e4e851678ab6c2e54e,
@@ -529,7 +563,8 @@ MonoBehaviour:
   stopDistance: 1.5
   cd: 2
   atkPoint: {fileID: 1398672956}
-  atkLength: 1.04
+  atkLength: 2.29
+  atk: 272
 --- !u!195 &740413059
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -799,6 +834,12 @@ MonoBehaviour:
   groundMinDistance: 0.25
   groundMaxDistance: 0.5
   slopeLimit: 75
+--- !u!4 &784922996 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400078, guid: 461413943bab6ef40aa2a33f18380180,
+    type: 3}
+  m_PrefabInstance: {fileID: 784922989}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &784922997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,6 +852,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f794e52b9c5f52943bd1b88a729a742d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interval: 1
+  atkPoint: {fileID: 630383390}
+  atkLength: 0.69
+  atk: 30
 --- !u!1 &879444130
 GameObject:
   m_ObjectHideFlags: 0
